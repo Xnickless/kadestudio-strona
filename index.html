@@ -194,6 +194,22 @@ section{padding-block:100px}
 @media (max-width:980px){.plans{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.plans,.terms{grid-template-columns:1fr}}
 
+/* progi B2B */
+.tiers{margin-top:28px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg2);padding:28px}
+.tiers-head{display:grid;gap:6px;margin-bottom:20px;max-width:640px}
+.tiers-head h3{font-size:1.3rem}
+.tiers-head p{color:var(--muted);font-size:.92rem;font-weight:300}
+.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tier{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:22px;display:grid;grid-template-rows:auto auto auto 1fr auto;gap:12px}
+.tier.mid{border-color:var(--accent)}
+.tier .k{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-hi)}
+.tier .price{font-size:1.9rem}
+.tier .desc{color:var(--muted);font-size:.9rem;font-weight:300}
+.tier ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:.88rem;align-content:start}
+.tier li::before{content:"✓  ";color:var(--accent-hi);font-weight:700}
+.tier .meta{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:12px;font:400 .76rem/1.4 var(--mono);color:var(--muted)}
+@media (max-width:900px){.tier-grid{grid-template-columns:1fr}.tiers{padding:20px}}
+
 /* calculator */
 .calc{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:start}
 .calc-form{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:30px}
@@ -482,8 +498,8 @@ footer a:hover{color:var(--head)}
       <article class="plan">
         <span class="k">Hurt</span><h3>Platforma B2B</h3>
         <div class="price">8 000 zł <small>netto, od</small></div>
-        <ul><li>Rejestracja firm po NIP</li><li>Ceny widoczne po zalogowaniu</li><li>Indywidualne rabaty</li><li>Zamówienia hurtowe i historia</li><li>Wersje językowe i integracje</li></ul>
-        <div class="meta"><span>4 do 8 tygodni</span><span>wycena po analizie</span></div>
+        <ul><li>Rejestracja firm po NIP</li><li>Ceny widoczne po zalogowaniu</li><li>Koszyk hurtowy i historia zamówień</li><li>Trzy progi: Start, Standard, Pro</li><li><a href="#progi-b2b" style="color:inherit">Zobacz, co jest w każdym progu ↓</a></li></ul>
+        <div class="meta"><span>4 do 12 tygodni</span><span>zależnie od progu</span></div>
       </article>
       <article class="plan">
         <span class="k">iOS i Android</span><h3>Aplikacja mobilna</h3>
@@ -497,6 +513,35 @@ footer a:hover{color:var(--head)}
         <ul><li>Aktualizacje i kopie zapasowe</li><li>Pilnowanie, czy wszystko działa</li><li>Drobne zmiany do 1 h w miesiącu</li><li>Odpowiedź w ciągu 48 godzin</li><li>Bez umowy na czas określony</li></ul>
         <div class="meta"><span>do każdego projektu</span><span>1 mies. wypowiedzenia</span></div>
       </article>
+    </div>
+    <div class="tiers" id="progi-b2b">
+      <div class="tiers-head">
+        <h3>Platforma B2B: trzy progi</h3>
+        <p>Cena zależy od tego, ilu masz klientów hurtowych, jak różne są ich ceny i z jakimi systemami platforma ma się łączyć.</p>
+      </div>
+      <div class="tier-grid">
+        <article class="tier">
+          <span class="k">Start</span>
+          <div class="price">8 000 zł <small>netto, od</small></div>
+          <p class="desc">Dla hurtowni, która zaczyna sprzedaż online.</p>
+          <ul><li>Rejestracja firm po NIP z akceptacją</li><li>Ceny widoczne po zalogowaniu</li><li>Jeden cennik hurtowy</li><li>Minimum zamówienia i opakowania zbiorcze</li><li>Do 300 produktów, jeden język</li></ul>
+          <div class="meta"><span>4 do 6 tygodni</span><span>Shopify lub WooCommerce</span></div>
+        </article>
+        <article class="tier mid">
+          <span class="k">Standard</span>
+          <div class="price">15 000 zł <small>netto, od</small></div>
+          <p class="desc">Dla hurtowni z różnymi grupami klientów.</p>
+          <ul><li>Wszystko z progu Start</li><li>Grupy cenowe i rabaty dla klientów</li><li>Do 3 wersji językowych</li><li>Import produktów z pliku lub feedu</li><li>Integracja z Baselinkerem</li></ul>
+          <div class="meta"><span>6 do 8 tygodni</span><span>najczęściej wybierany</span></div>
+        </article>
+        <article class="tier">
+          <span class="k">Pro</span>
+          <div class="price">30 000 zł <small>netto, od</small></div>
+          <p class="desc">Dla dystrybutorów z własnym systemem ERP.</p>
+          <ul><li>Wszystko z progu Standard</li><li>Integracja z ERP (np. Subiekt, Optima, enova)</li><li>Indywidualny cennik dla każdego klienta</li><li>Kredyt kupiecki i płatności odroczone</li><li>Raporty sprzedaży i konta handlowców</li></ul>
+          <div class="meta"><span>8 do 12 tygodni</span><span>wycena po analizie</span></div>
+        </article>
+      </div>
     </div>
     <div class="terms">
       <div><b>Płatność</b>Zaliczka 40% przed startem, reszta po odbiorze. Większe projekty rozliczamy etapami.</div>
@@ -655,7 +700,9 @@ const TYPES = [
   {id:"wiz",  name:"Strona wizytówka",   price:1500, pages:true},
   {id:"firm", name:"Strona firmowa",     price:3500, pages:true},
   {id:"shop", name:"Sklep internetowy",  price:6000, pages:true},
-  {id:"b2b",  name:"Platforma B2B",      price:8000, pages:false},
+  {id:"b2b",  name:"B2B Start",          price:8000, pages:false, form:"Platforma B2B"},
+  {id:"b2bs", name:"B2B Standard",       price:15000,pages:false, form:"Platforma B2B"},
+  {id:"b2bp", name:"B2B Pro",            price:30000,pages:false, form:"Platforma B2B"},
   {id:"app",  name:"Aplikacja mobilna",  price:15000,pages:false}
 ];
 const EXTRAS = [
@@ -700,7 +747,7 @@ function render(){
   document.getElementById("pages").textContent = state.pages;
   document.getElementById("lines").innerHTML = lines.map(l => `<div class="qline"><span>${l[0]}</span><span>${zl(l[1])}</span></div>`).join("");
   document.getElementById("total").textContent = zl(sum);
-  document.getElementById("care").textContent = `+ opieka od ${type.id==="app"||type.id==="b2b" ? 400 : 200} zł/mies. (opcjonalnie)`;
+  document.getElementById("care").textContent = `+ opieka od ${type.id==="app"||type.id.startsWith("b2b") ? 400 : 200} zł/mies. (opcjonalnie)`;
 }
 document.getElementById("wycena").addEventListener("change", e => {
   const i = e.target;
@@ -715,7 +762,7 @@ render();
 
 document.getElementById("useQuote").onclick = () => {
   const {type, lines, sum} = calc();
-  document.getElementById("f-type").value = type.name;
+  document.getElementById("f-type").value = type.form || type.name;
   const txt = "Wstępna wycena z kalkulatora:\n" + lines.map(l => `- ${l[0]}: ${zl(l[1])}`).join("\n") + `\nRazem od ${zl(sum)} netto\n\n`;
   const msg = document.getElementById("f-msg");
   msg.value = txt + msg.value.replace(/^Wstępna wycena z kalkulatora:[\s\S]*?netto\n\n/, "");
