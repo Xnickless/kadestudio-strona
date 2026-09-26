@@ -816,7 +816,7 @@ document.getElementById("form").addEventListener("submit", e => {
 <script>(function(){var n=document.querySelector(".nav"),b=n&&n.querySelector(".menu-btn");if(!b)return;function s(o){n.classList.toggle("open",o);b.setAttribute("aria-expanded",o);b.setAttribute("aria-label",o?"Zamknij menu":"Otwórz menu")}b.addEventListener("click",function(){s(!n.classList.contains("open"))});n.querySelectorAll("ul a").forEach(function(a){a.addEventListener("click",function(){s(false)})});document.addEventListener("keydown",function(e){if(e.key==="Escape")s(false)})})();</script>
 <script>document.querySelectorAll('a[href="/"]').forEach(function(a){a.addEventListener("click",function(e){if(location.pathname==="/"){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});history.replaceState(null,"","/")}})});</script>
 <script>(function(){
-function pick(id,scroll){var r=document.getElementById("type-"+id);if(!r)return;r.checked=true;r.dispatchEvent(new Event("change",{bubbles:true}));
+function pick(id,scroll){var r=document.getElementById("type-"+id);if(!r)return;document.querySelectorAll('input[name="extra"]:checked').forEach(function(x){x.checked=false;x.dispatchEvent(new Event("change",{bubbles:true}))});r.checked=true;r.dispatchEvent(new Event("change",{bubbles:true}));
 document.querySelectorAll(".tier").forEach(function(t){t.classList.toggle("sel",!!t.querySelector('[data-tier="'+id+'"]'))});
 if(scroll)document.getElementById("wycena").scrollIntoView({behavior:"smooth"});}
 document.querySelectorAll(".tier-btn").forEach(function(b){b.addEventListener("click",function(e){e.preventDefault();pick(b.dataset.tier,true)})});
