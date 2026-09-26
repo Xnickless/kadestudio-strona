@@ -92,7 +92,7 @@ section{padding-block:100px}
 .nav ul a{color:var(--muted);text-decoration:none}
 .nav ul a:hover{color:var(--head)}
 .nav .btn{padding:10px 16px;font-size:.86rem}
-@media (max-width:900px){.nav ul{display:none}}
+.menu-btn{display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--line2);background:transparent;color:var(--head);cursor:pointer;place-items:center}.menu-btn svg{width:20px;height:20px}@media (max-width:900px){.menu-btn{display:grid}.nav ul{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:4px 20px 14px;box-shadow:0 20px 40px -20px rgba(0,0,0,.7)}.nav.open ul{display:flex}.nav ul a{display:block;padding:14px 2px;font-size:1rem;color:var(--head);border-bottom:1px solid var(--line)}.nav ul li:last-child a{border-bottom:0}}@media (max-width:380px){.nav .btn{padding:10px 12px;font-size:.8rem}}
 
 /* hero */
 .hero{position:relative;overflow:hidden;padding-block:72px 80px}
@@ -362,7 +362,7 @@ a.svc .link{margin-top:4px}
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="/" aria-label="KD KaDeStudio"><span class="mark">KD</span>KaDeStudio</a>
-    <ul>
+    <ul id="menu">
       <li><a href="/#realizacje">Realizacje</a></li>
       <li><a href="/#uslugi">Usługi</a></li>
       <li><a href="/#cennik">Cennik</a></li>
@@ -371,6 +371,7 @@ a.svc .link{margin-top:4px}
       <li><a href="/#kontakt">Kontakt</a></li>
     </ul>
     <a class="btn p" href="/#kontakt">Wyceń projekt</a>
+    <button class="menu-btn" type="button" aria-label="Otwórz menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
 </header>
 
@@ -569,5 +570,6 @@ a.svc .link{margin-top:4px}
   </div>
 </footer>
 
+<script>(function(){var n=document.querySelector(".nav"),b=n&&n.querySelector(".menu-btn");if(!b)return;function s(o){n.classList.toggle("open",o);b.setAttribute("aria-expanded",o);b.setAttribute("aria-label",o?"Zamknij menu":"Otwórz menu")}b.addEventListener("click",function(){s(!n.classList.contains("open"))});n.querySelectorAll("ul a").forEach(function(a){a.addEventListener("click",function(){s(false)})});document.addEventListener("keydown",function(e){if(e.key==="Escape")s(false)})})();</script>
 </body>
 </html>
