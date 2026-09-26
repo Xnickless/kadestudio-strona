@@ -59,8 +59,8 @@ p{margin:0}
 .lead{font-size:1.05rem;color:var(--muted);max-width:58ch;font-weight:300}
 section{padding-block:100px}
 .sec-head{display:grid;gap:16px;margin-bottom:48px;max-width:740px}
-.sec-head.split{max-width:none;grid-template-columns:1fr auto;align-items:end;gap:24px}
-.sec-head.split > div{display:grid;gap:16px;max-width:680px}
+.sec-head.split{max-width:none;grid-template-columns:1fr;gap:24px}
+.sec-head.split > div:first-child{display:grid;gap:16px;max-width:680px}
 @media (max-width:760px){.sec-head.split{grid-template-columns:1fr}}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:12px;font:600 .94rem/1 var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:background .15s,border-color .15s,transform .15s}
@@ -179,6 +179,7 @@ section{padding-block:100px}
 .plan{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:28px;display:grid;grid-template-rows:auto auto auto 1fr auto;gap:14px}
 .plan .k{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--dim)}
 .price{font-size:2.3rem;font-weight:600;letter-spacing:-.045em;color:var(--head);font-variant-numeric:tabular-nums;line-height:1}
+.price.range{font-size:1.9rem}
 .price small{font-size:.8rem;font-weight:400;color:var(--muted);letter-spacing:0}
 .plan .desc{color:var(--muted);font-size:.92rem;font-weight:300}
 .plan ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:.9rem;align-content:start}
@@ -423,7 +424,7 @@ footer a:hover{color:var(--head)}
           <div class="tags"><span>Agenci AI</span><span>Python</span></div>
         </div>
       </article>
-      <article class="proj wide" data-cat="game">
+      <article class="proj" data-cat="game">
         <div class="thumb"><img src="img/kingfall.jpg" alt="Kingfall, ekran startowy gry" loading="lazy"><span class="kind">Gra 3D w przeglądarce</span></div>
         <div class="body">
           <div class="top"><h3>Kingfall</h3><span class="status">Projekt własny</span></div>
@@ -479,37 +480,37 @@ footer a:hover{color:var(--head)}
     <div class="plans">
       <article class="plan">
         <span class="k">Na start</span><h3>Strona wizytówka</h3>
-        <div class="price">1 500 zł <small>netto, od</small></div>
+        <div class="price"><small>od</small> 1 500 zł <small>netto</small></div>
         <ul><li>Jedna strona, do 6 sekcji</li><li>Wersja na telefon i komputer</li><li>Formularz kontaktowy i mapa</li><li>Podstawowe SEO i profil Google</li><li>Podpięcie domeny i poczty</li></ul>
         <div class="meta"><span>7 do 10 dni</span><span>2 rundy poprawek</span></div>
       </article>
       <article class="plan feat">
         <span class="k">Najczęściej wybierany</span><h3>Strona firmowa</h3>
-        <div class="price">3 500 zł <small>netto, od</small></div>
+        <div class="price"><small>od</small> 3 500 zł <small>netto</small></div>
         <ul><li>Do 6 podstron</li><li>Panel do edycji treści i zdjęć</li><li>Aktualności lub blog</li><li>Statystyki odwiedzin</li><li>Polityka prywatności i cookies</li></ul>
         <div class="meta"><span>2 do 4 tygodni</span><span>3 rundy poprawek</span></div>
       </article>
       <article class="plan">
         <span class="k">E-commerce</span><h3>Sklep internetowy</h3>
-        <div class="price">6 000 zł <small>netto, od</small></div>
+        <div class="price"><small>od</small> 6 000 zł <small>netto</small></div>
         <ul><li>Katalog produktów z wariantami</li><li>BLIK, karty i przelewy</li><li>Maile z potwierdzeniem zamówienia</li><li>Panel zamówień i stanów</li><li>Szkolenie z obsługi</li></ul>
         <div class="meta"><span>4 do 6 tygodni</span><span>3 rundy poprawek</span></div>
       </article>
       <article class="plan">
         <span class="k">Hurt</span><h3>Platforma B2B</h3>
-        <div class="price">8 000 zł <small>netto, od</small></div>
+        <div class="price range">8 000–30 000+ zł <small>netto</small></div>
         <ul><li>Rejestracja firm po NIP</li><li>Ceny widoczne po zalogowaniu</li><li>Koszyk hurtowy i historia zamówień</li><li>Trzy progi: Start, Standard, Pro</li><li><a href="#progi-b2b" style="color:inherit">Zobacz, co jest w każdym progu ↓</a></li></ul>
         <div class="meta"><span>4 do 12 tygodni</span><span>zależnie od progu</span></div>
       </article>
       <article class="plan">
         <span class="k">iOS i Android</span><h3>Aplikacja mobilna</h3>
-        <div class="price">15 000 zł <small>netto, od</small></div>
+        <div class="price"><small>od</small> 15 000 zł <small>netto</small></div>
         <ul><li>Pierwsza wersja aplikacji (MVP)</li><li>Konta, logowanie Apple i Google</li><li>Baza danych i powiadomienia</li><li>Panel admina w przeglądarce</li><li>Publikacja w App Store i Google Play</li></ul>
         <div class="meta"><span>6 do 10 tygodni</span><span>płatność w etapach</span></div>
       </article>
       <article class="plan">
         <span class="k">Abonament</span><h3>Opieka techniczna</h3>
-        <div class="price">200 zł <small>netto / mies., od</small></div>
+        <div class="price"><small>od</small> 200 zł <small>netto / mies.</small></div>
         <ul><li>Aktualizacje i kopie zapasowe</li><li>Pilnowanie, czy wszystko działa</li><li>Drobne zmiany do 1 h w miesiącu</li><li>Odpowiedź w ciągu 48 godzin</li><li>Bez umowy na czas określony</li></ul>
         <div class="meta"><span>do każdego projektu</span><span>1 mies. wypowiedzenia</span></div>
       </article>
@@ -522,21 +523,21 @@ footer a:hover{color:var(--head)}
       <div class="tier-grid">
         <article class="tier">
           <span class="k">Start</span>
-          <div class="price">8 000 zł <small>netto, od</small></div>
+          <div class="price"><small>od</small> 8 000 zł <small>netto</small></div>
           <p class="desc">Dla hurtowni, która zaczyna sprzedaż online.</p>
           <ul><li>Rejestracja firm po NIP z akceptacją</li><li>Ceny widoczne po zalogowaniu</li><li>Jeden cennik hurtowy</li><li>Minimum zamówienia i opakowania zbiorcze</li><li>Do 300 produktów, jeden język</li></ul>
           <div class="meta"><span>4 do 6 tygodni</span><span>Shopify lub WooCommerce</span></div>
         </article>
         <article class="tier mid">
           <span class="k">Standard</span>
-          <div class="price">15 000 zł <small>netto, od</small></div>
+          <div class="price"><small>od</small> 15 000 zł <small>netto</small></div>
           <p class="desc">Dla hurtowni z różnymi grupami klientów.</p>
           <ul><li>Wszystko z progu Start</li><li>Grupy cenowe i rabaty dla klientów</li><li>Do 3 wersji językowych</li><li>Import produktów z pliku lub feedu</li><li>Integracja z Baselinkerem</li></ul>
           <div class="meta"><span>6 do 8 tygodni</span><span>najczęściej wybierany</span></div>
         </article>
         <article class="tier">
           <span class="k">Pro</span>
-          <div class="price">30 000 zł <small>netto, od</small></div>
+          <div class="price"><small>od</small> 30 000 zł <small>netto</small></div>
           <p class="desc">Dla dystrybutorów z własnym systemem ERP.</p>
           <ul><li>Wszystko z progu Standard</li><li>Integracja z ERP (np. Subiekt, Optima, enova)</li><li>Indywidualny cennik dla każdego klienta</li><li>Kredyt kupiecki i płatności odroczone</li><li>Raporty sprzedaży i konta handlowców</li></ul>
           <div class="meta"><span>8 do 12 tygodni</span><span>wycena po analizie</span></div>
