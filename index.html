@@ -214,7 +214,7 @@ section{padding-block:100px}
 .tiers-head h3{font-size:1.3rem}
 .tiers-head p{color:var(--muted);font-size:.92rem;font-weight:300}
 .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.tier{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:22px;display:grid;grid-template-rows:auto auto auto 1fr auto;gap:12px}
+.tier{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:22px;display:grid;grid-template-rows:auto auto auto 1fr auto auto;gap:12px}
 .tier.mid{border-color:var(--accent)}
 .tier .k{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-hi)}
 .tier .price{font-size:1.9rem}
@@ -224,6 +224,7 @@ section{padding-block:100px}
 .tier .meta{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:12px;font:400 .76rem/1.4 var(--mono);color:var(--muted)}
 @media (max-width:900px){.tier-grid{grid-template-columns:1fr}.tiers{padding:20px}}
 
+.tier{transition:border-color .2s,transform .2s}.tier:hover,.tier:focus-within,.tier.sel{border-color:var(--accent)}.tier.sel{box-shadow:0 0 0 1px var(--accent)}.tier .tier-btn{width:100%;justify-content:center;margin-top:4px}.tier:hover .tier-btn,.tier.sel .tier-btn{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 /* calculator */
 .calc{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:start}
 .calc-form{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:30px}
@@ -507,7 +508,7 @@ footer a:hover{color:var(--head)}
         <div class="meta"><span>7 do 10 dni</span><span>2 rundy poprawek</span></div>
       </article>
       <article class="plan feat">
-        <span class="k">Najczęściej wybierany</span><h3>Strona firmowa</h3>
+        <span class="k">Polecamy na start</span><h3>Strona firmowa</h3>
         <div class="price"><small>od</small> 3 500 zł <small>netto</small></div>
         <ul><li>Do 6 podstron</li><li>Panel do edycji treści i zdjęć</li><li>Aktualności lub blog</li><li>Statystyki odwiedzin</li><li>Polityka prywatności i cookies</li></ul>
         <div class="meta"><span>2 do 4 tygodni</span><span>3 rundy poprawek</span></div>
@@ -549,13 +550,15 @@ footer a:hover{color:var(--head)}
           <p class="desc">Dla hurtowni, która zaczyna sprzedaż online.</p>
           <ul><li>Rejestracja firm po NIP z akceptacją</li><li>Ceny widoczne po zalogowaniu</li><li>Jeden cennik hurtowy</li><li>Minimum zamówienia i opakowania zbiorcze</li><li>Do 300 produktów, jeden język</li></ul>
           <div class="meta"><span>4 do 6 tygodni</span><span>Shopify lub WooCommerce</span></div>
+          <a class="btn s tier-btn" href="#wycena" data-tier="b2b">Wybierz Start <span class="arr" aria-hidden="true">→</span></a>
         </article>
-        <article class="tier mid">
+        <article class="tier">
           <span class="k">Standard</span>
           <div class="price"><small>od</small> 15 000 zł <small>netto</small></div>
           <p class="desc">Dla hurtowni z różnymi grupami klientów.</p>
           <ul><li>Wszystko z progu Start</li><li>Grupy cenowe i rabaty dla klientów</li><li>Do 3 wersji językowych</li><li>Import produktów z pliku lub feedu</li><li>Integracja z Baselinkerem</li></ul>
-          <div class="meta"><span>6 do 8 tygodni</span><span>najczęściej wybierany</span></div>
+          <div class="meta"><span>6 do 8 tygodni</span><span>Baselinker w cenie</span></div>
+          <a class="btn s tier-btn" href="#wycena" data-tier="b2bs">Wybierz Standard <span class="arr" aria-hidden="true">→</span></a>
         </article>
         <article class="tier">
           <span class="k">Pro</span>
@@ -563,6 +566,7 @@ footer a:hover{color:var(--head)}
           <p class="desc">Dla dystrybutorów z własnym systemem ERP.</p>
           <ul><li>Wszystko z progu Standard</li><li>Integracja z ERP (np. Subiekt, Optima, enova)</li><li>Indywidualny cennik dla każdego klienta</li><li>Kredyt kupiecki i płatności odroczone</li><li>Raporty sprzedaży i konta handlowców</li></ul>
           <div class="meta"><span>8 do 12 tygodni</span><span>wycena po analizie</span></div>
+          <a class="btn s tier-btn" href="#wycena" data-tier="b2bp">Wybierz Pro <span class="arr" aria-hidden="true">→</span></a>
         </article>
       </div>
     </div>
@@ -811,5 +815,12 @@ document.getElementById("form").addEventListener("submit", e => {
 </script>
 <script>(function(){var n=document.querySelector(".nav"),b=n&&n.querySelector(".menu-btn");if(!b)return;function s(o){n.classList.toggle("open",o);b.setAttribute("aria-expanded",o);b.setAttribute("aria-label",o?"Zamknij menu":"Otwórz menu")}b.addEventListener("click",function(){s(!n.classList.contains("open"))});n.querySelectorAll("ul a").forEach(function(a){a.addEventListener("click",function(){s(false)})});document.addEventListener("keydown",function(e){if(e.key==="Escape")s(false)})})();</script>
 <script>document.querySelectorAll('a[href="/"]').forEach(function(a){a.addEventListener("click",function(e){if(location.pathname==="/"){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});history.replaceState(null,"","/")}})});</script>
+<script>(function(){
+function pick(id,scroll){var r=document.getElementById("type-"+id);if(!r)return;r.checked=true;r.dispatchEvent(new Event("change",{bubbles:true}));
+document.querySelectorAll(".tier").forEach(function(t){t.classList.toggle("sel",!!t.querySelector('[data-tier="'+id+'"]'))});
+if(scroll)document.getElementById("wycena").scrollIntoView({behavior:"smooth"});}
+document.querySelectorAll(".tier-btn").forEach(function(b){b.addEventListener("click",function(e){e.preventDefault();pick(b.dataset.tier,true)})});
+var q=new URLSearchParams(location.search).get("prog");if(q&&/^b2b[sp]?$/.test(q)){pick(q,false);history.replaceState(null,"",location.pathname+location.hash)}
+})();</script>
 </body>
 </html>
