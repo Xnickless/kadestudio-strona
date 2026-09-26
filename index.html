@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KaDeStudio</title>
+<meta name="description" content="KaDeStudio projektuje i buduje strony internetowe, sklepy, platformy B2B i aplikacje mobilne. Jawny cennik, stała cena w umowie, kod na własność klienta.">
+<meta name="theme-color" content="#131517">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#131517;
+  --bg2:#17191C;
+  --card:#1B1E21;
+  --card2:#202428;
+  --line:#2A2E33;
+  --line2:#3A3F45;
+  --head:#F5F6F7;
+  --text:#E2E5E8;
+  --muted:#9BA1A8;
+  --dim:#6C727A;
+  --accent:#FF6B3D;
+  --accent-hi:#FF8A63;
+  --accent-soft:rgba(255,107,61,.12);
+  --on-accent:#131517;
+  --light:#F5F6F7;
+  --on-light:#131517;
+  --sans:"Sora", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --wrap:1180px;
+  --r:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:20px}
+h1,h2,h3{margin:0;color:var(--head);letter-spacing:-.035em;line-height:1.08;text-wrap:balance;font-weight:600}
+h2{font-size:clamp(2rem,4.4vw,3.1rem)}
+h3{font-size:1.12rem;letter-spacing:-.02em;line-height:1.3}
+p{margin:0}
+.hl{color:var(--accent-hi)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:500;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent-hi);justify-self:start}
+.lead{font-size:1.05rem;color:var(--muted);max-width:58ch;font-weight:300}
+section{padding-block:100px}
+.sec-head{display:grid;gap:16px;margin-bottom:48px;max-width:740px}
+.sec-head.split{max-width:none;grid-template-columns:1fr auto;align-items:end;gap:24px}
+.sec-head.split > div{display:grid;gap:16px;max-width:680px}
+@media (max-width:760px){.sec-head.split{grid-template-columns:1fr}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:12px;font:600 .94rem/1 var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:background .15s,border-color .15s,transform .15s}
+.btn.p{background:var(--accent);color:var(--on-accent)}
+.btn.p:hover{background:var(--accent-hi)}
+.btn.s{background:transparent;border-color:var(--line2);color:var(--head)}
+.btn.s:hover{border-color:var(--muted)}
+.btn .arr{transition:transform .15s}
+.btn:hover .arr{transform:translateX(3px)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(19,21,23,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;letter-spacing:-.02em;color:var(--head);text-decoration:none}
+.mark{width:32px;height:32px;border-radius:9px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-size:.74rem;font-weight:700}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:.9rem}
+.nav ul a{color:var(--muted);text-decoration:none}
+.nav ul a:hover{color:var(--head)}
+.nav .btn{padding:10px 16px;font-size:.86rem}
+@media (max-width:900px){.nav ul{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:72px 80px}
+.hero::before{content:"";position:absolute;right:-160px;top:-200px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,61,.16),transparent 65%);pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;position:relative}
+.hero-copy{display:grid;gap:24px}
+.hero h1{font-size:clamp(2.5rem,5.6vw,4.3rem);letter-spacing:-.045em;line-height:1.02}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.checks{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.86rem;color:var(--muted)}
+.checks span::before{content:"✓  ";color:var(--accent-hi);font-weight:700}
+.stage{position:relative;height:500px}
+.browser{position:absolute;left:0;top:30px;width:88%;border-radius:12px;overflow:hidden;background:var(--card);border:1px solid var(--line2);box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+.browser-bar{display:flex;align-items:center;gap:6px;padding:10px 12px;background:var(--card2);border-bottom:1px solid var(--line)}
+.browser-bar i{width:9px;height:9px;border-radius:50%;background:var(--line2)}
+.browser-bar span{margin-left:10px;flex:1;max-width:260px;height:20px;border-radius:6px;background:var(--bg);font:400 .68rem/20px var(--mono);color:var(--dim);padding-inline:8px;overflow:hidden;white-space:nowrap}
+.phone{position:absolute;right:0;bottom:0;width:200px;border-radius:32px;padding:7px;background:#2A2E33;box-shadow:0 40px 70px -20px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06)}
+.phone img{border-radius:26px}
+.float{position:absolute;left:22px;bottom:34px;background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:12px 16px;font-size:.82rem;color:var(--head);box-shadow:0 16px 40px -14px rgba(0,0,0,.7);display:flex;gap:12px;align-items:center}
+.float small{display:block;color:var(--muted);font-size:.74rem}
+.float .ic{width:34px;height:34px;border-radius:10px;background:var(--accent-soft);color:var(--accent-hi);display:grid;place-items:center;font-weight:700}
+@media (max-width:960px){.hero .wrap{grid-template-columns:1fr}.stage{height:440px;max-width:560px;width:100%}}
+@media (max-width:520px){.stage{height:330px}.phone{width:140px;border-radius:24px;padding:5px}.phone img{border-radius:20px}.browser{width:94%;top:0}.float{left:8px;bottom:12px}}
+
+/* numbers */
+.numbers{border-block:1px solid var(--line);background:var(--bg2)}
+.numbers .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.numbers div.n{padding:28px 20px;display:grid;gap:4px;border-left:1px solid var(--line)}
+.numbers div.n:first-child{border-left:0;padding-left:0}
+.numbers b{font-size:1.7rem;font-weight:600;color:var(--head);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.numbers span{font-size:.85rem;color:var(--muted)}
+@media (max-width:760px){.numbers .wrap{grid-template-columns:1fr 1fr}.numbers div.n:nth-child(3){border-left:0;padding-left:0}.numbers div.n:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* work */
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font:500 .85rem/1 var(--sans);padding:10px 14px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--muted);cursor:pointer;transition:all .15s}
+.filters button:hover{color:var(--head);border-color:var(--muted)}
+.filters button[aria-pressed="true"]{background:var(--light);color:var(--on-light);border-color:var(--light)}
+.featured{display:grid;grid-template-columns:1.1fr .9fr;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card);margin-bottom:16px}
+.featured .shots{position:relative;background:radial-gradient(circle at 50% 120%,rgba(255,107,61,.25),transparent 60%),linear-gradient(160deg,#24282C,#1A1D20);display:flex;align-items:flex-end;justify-content:center;gap:14px;padding:40px 24px 0;min-height:400px;overflow:hidden}
+.featured .shots img{width:30%;max-width:175px;border-radius:20px 20px 0 0;box-shadow:0 -10px 40px rgba(0,0,0,.5);transition:transform .4s ease}
+.featured .shots img:nth-child(2){transform:translateY(-26px)}
+.featured:hover .shots img:nth-child(1){transform:translateY(-8px) rotate(-2deg)}
+.featured:hover .shots img:nth-child(3){transform:translateY(-8px) rotate(2deg)}
+.featured .info{padding:40px;display:grid;gap:16px;align-content:center}
+.featured h3{font-size:2rem;letter-spacing:-.04em}
+.featured p{color:var(--muted);font-weight:300}
+.spec{margin:0;display:grid;grid-template-columns:120px 1fr;font-size:.88rem;border-top:1px solid var(--line)}
+.spec dt,.spec dd{padding-block:9px;border-bottom:1px solid var(--line)}
+.spec dt{color:var(--dim)}
+.spec dd{margin:0;color:var(--text)}
+.link{display:inline-flex;gap:6px;align-items:center;color:var(--accent-hi);font-weight:500;text-decoration:none;font-size:.92rem;justify-self:start}
+.link:hover{color:var(--head)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.proj{display:grid;grid-template-rows:auto 1fr;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card);transition:border-color .2s,transform .2s}
+.proj:hover{border-color:var(--line2);transform:translateY(-3px)}
+.proj.wide{grid-column:span 2}
+.thumb{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--card2);border-bottom:1px solid var(--line)}
+.proj.wide .thumb{aspect-ratio:16/8}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s ease}
+.proj:hover .thumb img{transform:scale(1.04)}
+.thumb .kind{position:absolute;left:12px;top:12px;font:500 .72rem/1 var(--sans);padding:6px 10px;border-radius:999px;background:rgba(19,21,23,.85);color:var(--head);backdrop-filter:blur(6px)}
+.proj .body{padding:20px 22px 22px;display:grid;gap:10px;align-content:start}
+.proj .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.proj h3{font-size:1.2rem}
+.status{font:500 .72rem/1 var(--mono);color:var(--dim);white-space:nowrap}
+.status.live{color:#6FD39B}
+.status.live::before{content:"● "}
+.proj p{color:var(--muted);font-size:.92rem;font-weight:300}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font:400 .72rem/1 var(--mono);padding:5px 8px;border-radius:6px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+/* illustrated thumbs */
+.art{width:100%;height:100%;display:grid;place-items:center;position:relative}
+.art-match{background:linear-gradient(160deg,#3B2A1C,#1E1610)}
+.tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;width:62%;transform:rotate(-4deg)}
+.tiles i{aspect-ratio:1;border-radius:8px;box-shadow:inset 0 -3px 0 rgba(0,0,0,.25)}
+.art-faces{background:radial-gradient(circle at 50% 45%,rgba(255,107,61,.25),transparent 55%),linear-gradient(160deg,#1E2226,#15171A)}
+.cam{width:56%;aspect-ratio:4/3;border-radius:12px;border:1px solid var(--line2);background:#101214;display:grid;place-items:center;position:relative}
+.cam::before{content:"REC";position:absolute;left:10px;top:8px;font:500 .62rem var(--mono);color:#FF6B6B}
+.cam .face{width:34%;aspect-ratio:1;border-radius:50%;border:2px dashed var(--accent-hi);display:grid;place-items:center;font-size:2rem}
+.proj[hidden]{display:none}
+@media (max-width:980px){.grid{grid-template-columns:1fr 1fr}.proj.wide{grid-column:span 2}.featured{grid-template-columns:1fr}.featured .shots{min-height:320px}}
+@media (max-width:640px){.grid{grid-template-columns:1fr}.proj.wide{grid-column:auto}.proj.wide .thumb{aspect-ratio:16/10}.featured .info{padding:26px 22px}.spec{grid-template-columns:100px 1fr}}
+
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:26px;display:grid;gap:12px;align-content:start}
+.svc-ico{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent-hi);display:grid;place-items:center}
+.svc-ico svg{width:21px;height:21px}
+.svc p{color:var(--muted);font-size:.93rem;font-weight:300}
+.svc .for{font:400 .76rem/1.5 var(--mono);color:var(--dim)}
+@media (max-width:900px){.svc-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.svc-grid{grid-template-columns:1fr}}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:28px;display:grid;grid-template-rows:auto auto auto 1fr auto;gap:14px}
+.plan .k{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--dim)}
+.price{font-size:2.3rem;font-weight:600;letter-spacing:-.045em;color:var(--head);font-variant-numeric:tabular-nums;line-height:1}
+.price small{font-size:.8rem;font-weight:400;color:var(--muted);letter-spacing:0}
+.plan .desc{color:var(--muted);font-size:.92rem;font-weight:300}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:.9rem;align-content:start}
+.plan li::before{content:"✓  ";color:var(--accent-hi);font-weight:700}
+.plan .meta{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:14px;font:400 .78rem/1.4 var(--mono);color:var(--muted)}
+.plan.feat{background:var(--light);border-color:var(--light);--head:#131517;--muted:#5E6470;--dim:#7A808A;--line:#DADDE1}
+.plan.feat,.plan.feat li{color:#2A2E33}
+.plan.feat li::before{color:#E2542A}
+.plan.feat .k{color:#E2542A}
+.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.terms div{padding:18px 20px;border-radius:12px;border:1px dashed var(--line2);font-size:.88rem;color:var(--muted);font-weight:300}
+.terms b{display:block;color:var(--head);font-weight:600;margin-bottom:4px}
+@media (max-width:980px){.plans{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.plans,.terms{grid-template-columns:1fr}}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:start}
+.calc-form{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:30px}
+.calc fieldset{border:0;margin:0 0 28px;padding:0}
+.calc fieldset:last-child{margin-bottom:0}
+.calc legend{font:500 .74rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:10px;border:1px solid var(--line2);font-size:.88rem;color:var(--text);transition:all .15s}
+.chip span em{font:normal 400 .74rem var(--mono);color:var(--dim)}
+.chip:hover span{border-color:var(--muted)}
+.chip input:checked + span{background:var(--accent-soft);border-color:var(--accent);color:var(--head)}
+.chip input:checked + span em{color:var(--accent-hi)}
+.chip input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
+.stepper{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stepper button{width:38px;height:38px;border-radius:10px;border:1px solid var(--line2);background:transparent;color:var(--head);font:500 1.1rem/1 var(--sans);cursor:pointer}
+.stepper button:hover{border-color:var(--muted)}
+.stepper output{font:500 1.05rem var(--mono);min-width:2ch;text-align:center;color:var(--head)}
+.stepper small{color:var(--dim);font-size:.84rem}
+.receipt{border-radius:var(--r);background:var(--light);color:#2A2E33;padding:28px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 90px)}
+.receipt-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;border-bottom:2px solid #131517}
+.receipt-head h3{color:#131517;font-size:1.15rem}
+.receipt-head span{font:400 .74rem var(--mono);color:#7A808A}
+.qline{display:flex;justify-content:space-between;gap:12px;padding-block:9px;border-bottom:1px dashed #D0D4D9;font-size:.86rem;font-variant-numeric:tabular-nums}
+.qline span:last-child{font-family:var(--mono);white-space:nowrap;color:#131517}
+.total{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-top:18px}
+.total span{color:#5E6470;font-size:.88rem}
+.total b{font-size:2.2rem;font-weight:600;letter-spacing:-.045em;color:#131517;font-variant-numeric:tabular-nums}
+.care{font-size:.8rem;color:#5E6470;text-align:right;margin-top:4px}
+.receipt .hint{font-size:.8rem;color:#5E6470;margin-top:16px;font-weight:300}
+.receipt .btn{width:100%;margin-top:18px}
+@media (max-width:900px){.calc{grid-template-columns:1fr}.receipt{position:static}}
+
+/* process */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.steps li{border-top:2px solid var(--line2);padding-top:20px;display:grid;gap:8px;align-content:start}
+.steps li:first-child{border-top-color:var(--accent)}
+.steps .n{font:500 .78rem var(--mono);color:var(--accent-hi)}
+.steps p{color:var(--muted);font-size:.9rem;font-weight:300}
+.steps .when{font:400 .76rem var(--mono);color:var(--dim)}
+@media (max-width:960px){.steps{grid-template-columns:1fr 1fr;gap:28px 16px}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* faq */
+.faq{display:grid;grid-template-columns:.75fr 1.25fr;gap:48px}
+.faq-list{display:grid;gap:8px}
+details{border:1px solid var(--line);border-radius:12px;background:var(--card);padding-inline:20px}
+details[open]{border-color:var(--line2)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:18px;font-weight:500;color:var(--head);font-size:.98rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:400 1.3rem/1 var(--mono);color:var(--accent-hi)}
+details[open] summary::after{content:"−"}
+details p{padding-bottom:18px;color:var(--muted);font-weight:300;max-width:64ch}
+@media (max-width:900px){.faq{grid-template-columns:1fr;gap:8px}}
+
+/* contact */
+.contact-box{border:1px solid var(--line);border-radius:22px;background:radial-gradient(500px circle at 0% 0%,rgba(255,107,61,.13),transparent 60%),var(--card);padding:48px;display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+.contact-side{display:grid;gap:20px}
+.contact-data{margin:8px 0 0;display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:.92rem}
+.contact-data dt{color:var(--dim)}
+.contact-data dd{margin:0;color:var(--head)}
+.contact-data a{text-decoration:none;border-bottom:1px solid var(--accent)}
+form{display:grid;gap:16px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:7px;font-size:.84rem;color:var(--muted)}
+input[type=text],input[type=email],select,textarea{font:inherit;font-size:.98rem;color:var(--head);background:var(--bg);border:1px solid var(--line2);border-radius:10px;padding:12px 14px;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+select option{background:var(--card)}
+textarea{min-height:130px;resize:vertical}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.82rem}
+.consent input{margin-top:3px;width:17px;height:17px;accent-color:var(--accent);flex:none}
+form .btn{justify-self:start}
+#formMsg{font-size:.88rem;color:var(--accent-hi)}
+@media (max-width:900px){.contact-box{grid-template-columns:1fr;padding:30px 22px;gap:30px}}
+@media (max-width:520px){.row2{grid-template-columns:1fr}form .btn{justify-self:stretch}}
+
+footer{border-top:1px solid var(--line);margin-top:40px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-block:28px;font-size:.84rem;color:var(--dim)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--head)}
+
+@media (prefers-reduced-motion: reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="KaDeStudio, strona główna"><span class="mark">KD</span>KaDeStudio</a>
+    <ul>
+      <li><a href="#realizacje">Realizacje</a></li>
+      <li><a href="#uslugi">Usługi</a></li>
+      <li><a href="#cennik">Cennik</a></li>
+      <li><a href="#wycena">Wycena</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn p" href="#kontakt">Wyceń projekt</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Strony · Aplikacje · B2B</span>
+      <h1>Strony i aplikacje, które <span class="hl">pracują na Twoją firmę</span></h1>
+      <p class="lead">Projektujemy i programujemy strony firmowe, sklepy, platformy hurtowe i aplikacje mobilne na iOS i Androida. Cenę i termin znasz przed startem.</p>
+      <div class="row">
+        <a class="btn p" href="#wycena">Policz koszt projektu <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn s" href="#realizacje">Zobacz realizacje</a>
+      </div>
+      <div class="checks"><span>Stała cena w umowie</span><span>Kod na własność</span><span>Faktura VAT</span></div>
+    </div>
+    <div class="stage">
+      <div class="browser">
+        <div class="browser-bar"><i></i><i></i><i></i><span>Platforma hurtowa B2B</span></div>
+        <img src="img/hurtownia-b2b.jpg" alt="Platforma hurtowa B2B">
+      </div>
+      <div class="phone"><img src="img/gymbro-1-lista.jpg" alt="Aplikacja mobilna Find GymBro"></div>
+      <div class="float"><span class="ic">✓</span><span>Zatwierdzone przez Apple<small>aplikacja w App Store</small></span></div>
+    </div>
+  </div>
+</section>
+
+<div class="numbers">
+  <div class="wrap">
+    <div class="n"><b>9</b><span>projektów w portfolio</span></div>
+    <div class="n"><b>iOS i Android</b><span>aplikacje w sklepach</span></div>
+    <div class="n"><b>od 1 500 zł</b><span>jawny cennik</span></div>
+    <div class="n"><b>30 dni</b><span>bezpłatnych poprawek</span></div>
+  </div>
+</div>
+
+<section id="realizacje">
+  <div class="wrap">
+    <div class="sec-head split">
+      <div>
+        <span class="eyebrow">Realizacje</span>
+        <h2>Projekty, które już działają</h2>
+        <p class="lead">Aplikacje w sklepach, sklepy i platformy dla klientów, systemy AI i gry. Każdy zrobiony od zera.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filtruj projekty">
+        <button type="button" data-f="all" aria-pressed="true">Wszystkie</button>
+        <button type="button" data-f="app" aria-pressed="false">Aplikacje</button>
+        <button type="button" data-f="web" aria-pressed="false">Strony i sklepy</button>
+        <button type="button" data-f="ai" aria-pressed="false">AI</button>
+        <button type="button" data-f="game" aria-pressed="false">Gry</button>
+      </div>
+    </div>
+
+    <article class="featured proj" data-cat="app">
+      <div class="shots">
+        <img src="img/gymbro-2-nowe-ogloszenie.jpg" alt="Find GymBro, dodawanie ogłoszenia" loading="lazy">
+        <img src="img/gymbro-1-lista.jpg" alt="Find GymBro, lista ogłoszeń" loading="lazy">
+        <img src="img/gymbro-3-plan-treningu.jpg" alt="Find GymBro, plan treningu" loading="lazy">
+      </div>
+      <div class="info">
+        <span class="status live">W App Store · Android w becie</span>
+        <h3>Find GymBro</h3>
+        <p>Aplikacja łącząca osoby, które szukają partnera do treningu. Pełny zakres: projekt, aplikacje na iOS i Androida, backend, czat, powiadomienia, panel moderacji i strona produktu.</p>
+        <dl class="spec">
+          <dt>Platformy</dt><dd>iOS, Android, strona www</dd>
+          <dt>Technologie</dt><dd>React Native, Supabase</dd>
+          <dt>Dane</dt><dd>katalog 1741 siłowni w Polsce</dd>
+        </dl>
+        <a class="link" href="https://findgymbro.pl" target="_blank" rel="noopener">findgymbro.pl ↗</a>
+      </div>
+    </article>
+
+    <div class="grid" id="projects">
+      <article class="proj wide" data-cat="web">
+        <div class="thumb"><img src="img/hurtownia-b2b.jpg" alt="Hurtownia B2B, strona główna" loading="lazy"><span class="kind">Platforma B2B</span></div>
+        <div class="body">
+          <div class="top"><h3>Hurtownia B2B producenta dzianin</h3><span class="status live">Wdrożone</span></div>
+          <p>Platforma hurtowa polskiego producenta czapek i kominów. Ceny tylko dla zaakceptowanych firm, rejestracja po NIP, zamówienia w opakowaniach zbiorczych i trzy wersje językowe.</p>
+          <div class="tags"><span>Shopify</span><span>B2B</span><span>PL / DE / EN</span></div>
+        </div>
+      </article>
+      <article class="proj" data-cat="web app">
+        <div class="thumb"><img src="img/usart.jpg" alt="UsArt, wyszukiwarka artystów" loading="lazy"><span class="kind">Platforma i aplikacja</span></div>
+        <div class="body">
+          <div class="top"><h3>UsArt</h3><span class="status live">Online</span></div>
+          <p>Katalog artystów: tatuażyści, fotografowie, malarze. Portfolio, wyszukiwanie po mieście i wiadomości do twórcy.</p>
+          <div class="tags"><span>Web</span><span>iOS</span><span>Stripe</span></div>
+        </div>
+      </article>
+      <article class="proj" data-cat="web">
+        <div class="thumb"><img src="img/sklep-krzesla.jpg" alt="Sklep z krzesłami premium, strona główna" loading="lazy"><span class="kind">Sklep internetowy</span></div>
+        <div class="body">
+          <div class="top"><h3>Sklep z krzesłami</h3><span class="status">Dla klienta</span></div>
+          <p>Sklep premium z krzesłami z litego dębu. Duże zdjęcia, promocje i bestsellery.</p>
+          <div class="tags"><span>Next.js</span><span>E-commerce</span></div>
+        </div>
+      </article>
+      <article class="proj" data-cat="web">
+        <div class="thumb"><img src="img/marka-odziezowa.jpg" alt="Strona marki odzieżowej" loading="lazy"><span class="kind">Strona marki</span></div>
+        <div class="body">
+          <div class="top"><h3>Marka odzieżowa</h3><span class="status">Dla klienta</span></div>
+          <p>Strona marki ubrań szytych ręcznie i wypuszczanych w krótkich, numerowanych seriach.</p>
+          <div class="tags"><span>Landing page</span><span>Moda</span></div>
+        </div>
+      </article>
+      <article class="proj" data-cat="ai">
+        <div class="thumb"><img src="img/aurora.jpg" alt="Aurora, panel agentów AI" loading="lazy"><span class="kind">Automatyzacja AI</span></div>
+        <div class="body">
+          <div class="top"><h3>Aurora</h3><span class="status">Projekt własny</span></div>
+          <p>Zespół agentów AI, którzy szukają produktów, piszą opisy i sprawdzają jakość. Podgląd pracy na żywo.</p>
+          <div class="tags"><span>Agenci AI</span><span>Python</span></div>
+        </div>
+      </article>
+      <article class="proj wide" data-cat="game">
+        <div class="thumb"><img src="img/kingfall.jpg" alt="Kingfall, ekran startowy gry" loading="lazy"><span class="kind">Gra 3D w przeglądarce</span></div>
+        <div class="body">
+          <div class="top"><h3>Kingfall</h3><span class="status">Projekt własny</span></div>
+          <p>Gra tower defense w klimacie Twierdzy. Łucznicy na murze, wieże, zaklęcia i dziesięć fal wrogów. Cała grafika powstaje w kodzie, bez gotowych modeli.</p>
+          <div class="tags"><span>Three.js</span><span>Gra 3D</span><span>Przeglądarka</span></div>
+        </div>
+      </article>
+      <article class="proj" data-cat="game app">
+        <div class="thumb"><div class="art art-match" aria-hidden="true"><div class="tiles" id="tiles"></div></div><span class="kind">Gra mobilna</span></div>
+        <div class="body">
+          <div class="top"><h3>Archiwum Antyków</h3><span class="status">W produkcji</span></div>
+          <p>Gra logiczna typu „trzy w rzędzie” dla graczy 40+. Duże przyciski, spokojne animacje, wysoki kontrast.</p>
+          <div class="tags"><span>Flutter</span><span>iOS i Android</span></div>
+        </div>
+      </article>
+      <article class="proj" data-cat="ai app">
+        <div class="thumb"><div class="art art-faces" aria-hidden="true"><div class="cam"><div class="face">😄</div></div></div><span class="kind">Rozpoznawanie obrazu</span></div>
+        <div class="body">
+          <div class="top"><h3>Twarze</h3><span class="status">Projekt własny</span></div>
+          <p>Rozpoznaje minę z kamerki i nakłada reakcję. Działa jako wirtualna kamera w Zoomie, Teams i Meet.</p>
+          <div class="tags"><span>Python</span><span>Wizja komputerowa</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="uslugi" style="background:var(--bg2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Usługi</span>
+      <h2>Co możemy dla Ciebie zbudować</h2>
+      <p class="lead">Każdy projekt robimy od zera pod Twoją firmę, bez gotowych szablonów.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div><h3>Strony wizytówki</h3><p>Jedna dopracowana strona: kim jesteś, co robisz i jak się z Tobą skontaktować.</p><span class="for">gabinety · warsztaty · usługi lokalne</span></div>
+      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div><h3>Strony firmowe</h3><p>Oferta, aktualności i panel, w którym sam zmienisz teksty i zdjęcia.</p><span class="for">firmy usługowe · biura · restauracje</span></div>
+      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h2l2 11h10l2-8H7"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg></div><h3>Sklepy internetowe</h3><p>Produkty, koszyk, BLIK i karty, maile do klientów i panel zamówień.</p><span class="for">marki · producenci · rękodzieło</span></div>
+      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V8l9-5 9 5v13"/><path d="M8 21v-7h8v7"/></svg></div><h3>Platformy B2B</h3><p>Hurtownia online: rejestracja po NIP, ceny po zalogowaniu, rabaty i integracje.</p><span class="for">hurtownie · dystrybutorzy</span></div>
+      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></div><h3>Aplikacje mobilne</h3><p>iOS i Android z jednego kodu. Konta, czat, powiadomienia, panel admina i publikacja w sklepach.</p><span class="for">startupy · kluby · rezerwacje</span></div>
+      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg></div><h3>Automatyzacje i AI</h3><p>Asystent AI na stronie, automatyczne odpowiedzi, opisy produktów i łączenie systemów.</p><span class="for">firmy z powtarzalną pracą</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="cennik">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Cennik</span>
+      <h2>Cenę znasz przed startem</h2>
+      <p class="lead">To ceny startowe za typowy zakres. Po rozmowie dostajesz wycenę na piśmie, a ta kwota trafia do umowy i już się nie zmienia.</p>
+    </div>
+    <div class="plans">
+      <article class="plan">
+        <span class="k">Na start</span><h3>Strona wizytówka</h3>
+        <div class="price">1 500 zł <small>netto, od</small></div>
+        <ul><li>Jedna strona, do 6 sekcji</li><li>Wersja na telefon i komputer</li><li>Formularz kontaktowy i mapa</li><li>Podstawowe SEO i profil Google</li><li>Podpięcie domeny i poczty</li></ul>
+        <div class="meta"><span>7 do 10 dni</span><span>2 rundy poprawek</span></div>
+      </article>
+      <article class="plan feat">
+        <span class="k">Najczęściej wybierany</span><h3>Strona firmowa</h3>
+        <div class="price">3 500 zł <small>netto, od</small></div>
+        <ul><li>Do 6 podstron</li><li>Panel do edycji treści i zdjęć</li><li>Aktualności lub blog</li><li>Statystyki odwiedzin</li><li>Polityka prywatności i cookies</li></ul>
+        <div class="meta"><span>2 do 4 tygodni</span><span>3 rundy poprawek</span></div>
+      </article>
+      <article class="plan">
+        <span class="k">E-commerce</span><h3>Sklep internetowy</h3>
+        <div class="price">6 000 zł <small>netto, od</small></div>
+        <ul><li>Katalog produktów z wariantami</li><li>BLIK, karty i przelewy</li><li>Maile z potwierdzeniem zamówienia</li><li>Panel zamówień i stanów</li><li>Szkolenie z obsługi</li></ul>
+        <div class="meta"><span>4 do 6 tygodni</span><span>3 rundy poprawek</span></div>
+      </article>
+      <article class="plan">
+        <span class="k">Hurt</span><h3>Platforma B2B</h3>
+        <div class="price">8 000 zł <small>netto, od</small></div>
+        <ul><li>Rejestracja firm po NIP</li><li>Ceny widoczne po zalogowaniu</li><li>Indywidualne rabaty</li><li>Zamówienia hurtowe i historia</li><li>Wersje językowe i integracje</li></ul>
+        <div class="meta"><span>4 do 8 tygodni</span><span>wycena po analizie</span></div>
+      </article>
+      <article class="plan">
+        <span class="k">iOS i Android</span><h3>Aplikacja mobilna</h3>
+        <div class="price">15 000 zł <small>netto, od</small></div>
+        <ul><li>Pierwsza wersja aplikacji (MVP)</li><li>Konta, logowanie Apple i Google</li><li>Baza danych i powiadomienia</li><li>Panel admina w przeglądarce</li><li>Publikacja w App Store i Google Play</li></ul>
+        <div class="meta"><span>6 do 10 tygodni</span><span>płatność w etapach</span></div>
+      </article>
+      <article class="plan">
+        <span class="k">Abonament</span><h3>Opieka techniczna</h3>
+        <div class="price">200 zł <small>netto / mies., od</small></div>
+        <ul><li>Aktualizacje i kopie zapasowe</li><li>Pilnowanie, czy wszystko działa</li><li>Drobne zmiany do 1 h w miesiącu</li><li>Odpowiedź w ciągu 48 godzin</li><li>Bez umowy na czas określony</li></ul>
+        <div class="meta"><span>do każdego projektu</span><span>1 mies. wypowiedzenia</span></div>
+      </article>
+    </div>
+    <div class="terms">
+      <div><b>Płatność</b>Zaliczka 40% przed startem, reszta po odbiorze. Większe projekty rozliczamy etapami.</div>
+      <div><b>Faktura</b>Ceny są podane netto. Do każdej płatności wystawiamy fakturę.</div>
+      <div><b>Projekty AI</b>Automatyzacje i integracje wyceniamy indywidualnie, po rozmowie.</div>
+    </div>
+  </div>
+</section>
+
+<section id="wycena" style="background:var(--bg2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Kalkulator</span>
+      <h2>Policz koszt w 30 sekund</h2>
+      <p class="lead">Zaznacz, czego potrzebujesz. Wynik możesz od razu dołączyć do zapytania.</p>
+    </div>
+    <div class="calc">
+      <div class="calc-form">
+        <fieldset><legend>Rodzaj projektu</legend><div class="chips" id="types"></div></fieldset>
+        <fieldset id="pagesBox">
+          <legend>Dodatkowe podstrony ponad pakiet</legend>
+          <div class="stepper">
+            <button type="button" id="minus" aria-label="Mniej podstron">−</button>
+            <output id="pages" aria-live="polite">0</output>
+            <button type="button" id="plus" aria-label="Więcej podstron">+</button>
+            <small>300 zł za każdą</small>
+          </div>
+        </fieldset>
+        <fieldset><legend>Dodatki</legend><div class="chips" id="extras"></div></fieldset>
+        <fieldset><legend>Termin</legend><div class="chips" id="speed"></div></fieldset>
+      </div>
+      <div class="receipt" aria-live="polite">
+        <div class="receipt-head"><h3>Wstępna wycena</h3><span>kwoty netto</span></div>
+        <div id="lines"></div>
+        <div class="total"><span>Razem od</span><b id="total">0 zł</b></div>
+        <div class="care" id="care"></div>
+        <p class="hint">Dokładną kwotę potwierdzamy po krótkiej rozmowie.</p>
+        <button class="btn p" type="button" id="useQuote">Dołącz do zapytania <span class="arr" aria-hidden="true">→</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="wspolpraca">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Współpraca</span>
+      <h2>Od rozmowy do startu</h2>
+    </div>
+    <ol class="steps">
+      <li><span class="n">01</span><h3>Rozmowa</h3><p>Omawiamy cel, budżet i termin.</p><span class="when">30 minut, za darmo</span></li>
+      <li><span class="n">02</span><h3>Oferta i umowa</h3><p>Zakres, cena i harmonogram na piśmie.</p><span class="when">do 2 dni</span></li>
+      <li><span class="n">03</span><h3>Projekt</h3><p>Wygląd na telefonie i komputerze do akceptacji.</p><span class="when">według pakietu</span></li>
+      <li><span class="n">04</span><h3>Budowa</h3><p>Co tydzień link do podglądu postępu.</p><span class="when">cotygodniowe podglądy</span></li>
+      <li><span class="n">05</span><h3>Start</h3><p>Publikacja, przekazanie dostępów i szkolenie.</p><span class="when">30 dni poprawek gratis</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap faq">
+    <div class="sec-head">
+      <span class="eyebrow">FAQ</span>
+      <h2>Najczęstsze pytania</h2>
+    </div>
+    <div class="faq-list">
+      <details><summary>Ile kosztuje utrzymanie strony po starcie?</summary><p>Domena to około 50 do 100 zł rocznie. Prosta strona może działać na darmowym hostingu, większa zwykle kosztuje od 20 do 100 zł miesięcznie. Opieka techniczna jest opcjonalna, od 200 zł netto miesięcznie.</p></details>
+      <details><summary>Kto jest właścicielem strony i kodu?</summary><p>Ty. Po opłaceniu ostatniej faktury przenosimy na Ciebie prawa autorskie do kodu i projektu. Domenę i konta od początku zakładamy na Twoją firmę.</p></details>
+      <details><summary>Czy wystawiacie faktury?</summary><p>Tak, do każdej płatności.</p></details>
+      <details><summary>Co jeśli po starcie coś przestanie działać?</summary><p>Przez 30 dni od publikacji poprawiamy błędy za darmo. Później w ramach opieki technicznej albo według stawki 150 zł netto za godzinę.</p></details>
+      <details><summary>Czy sam mogę zmieniać treści?</summary><p>Na stronie firmowej i w sklepie tak. Dostajesz prosty panel i szkolenie. W wizytówce zmiany robimy za Ciebie.</p></details>
+      <details><summary>Czy pomożecie z tekstami i zdjęciami?</summary><p>Tak. Możemy napisać teksty i przygotować grafiki albo wykorzystać Twoje materiały.</p></details>
+      <details><summary>Jak wygląda publikacja aplikacji?</summary><p>Całą publikację robimy za Ciebie. Konta deweloperskie Apple (99 USD rocznie) i Google (25 USD jednorazowo) zakładasz na swoją firmę, żeby aplikacja od początku była Twoja.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt" style="padding-top:0">
+  <div class="wrap">
+    <div class="contact-box">
+      <div class="contact-side">
+        <span class="eyebrow">Kontakt</span>
+        <h2>Porozmawiajmy o Twoim projekcie</h2>
+        <p class="lead">Opisz krótko, czego potrzebujesz. Odpowiemy w ciągu jednego dnia roboczego. Pierwsza rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
+        <dl class="contact-data">
+          <dt>E-mail</dt><dd><a id="mailLink" href="mailto:kontakt@kadestudio.pl">kontakt@kadestudio.pl</a></dd>
+          <dt>Obszar</dt><dd>cała Polska, zdalnie</dd>
+          <dt>Odpowiedź</dt><dd>do 1 dnia roboczego</dd>
+        </dl>
+      </div>
+      <form id="form" novalidate>
+        <div class="row2">
+          <label for="f-name">Imię i nazwisko<input id="f-name" type="text" autocomplete="name" required></label>
+          <label for="f-email">E-mail<input id="f-email" type="email" autocomplete="email" required></label>
+        </div>
+        <div class="row2">
+          <label for="f-type">Rodzaj projektu
+            <select id="f-type">
+              <option>Strona wizytówka</option>
+              <option selected>Strona firmowa</option>
+              <option>Sklep internetowy</option>
+              <option>Platforma B2B</option>
+              <option>Aplikacja mobilna</option>
+              <option>Automatyzacja lub AI</option>
+              <option>Jeszcze nie wiem</option>
+            </select>
+          </label>
+          <label for="f-budget">Budżet
+            <select id="f-budget">
+              <option>do 2 000 zł</option>
+              <option selected>2 000 do 5 000 zł</option>
+              <option>5 000 do 10 000 zł</option>
+              <option>10 000 do 25 000 zł</option>
+              <option>powyżej 25 000 zł</option>
+            </select>
+          </label>
+        </div>
+        <label for="f-msg">Opis projektu<textarea id="f-msg" placeholder="Np. prowadzimy warsztat samochodowy i potrzebujemy strony z cennikiem oraz zapisami na przegląd."></textarea></label>
+        <label class="consent" for="f-ok"><input id="f-ok" type="checkbox" required><span>Zgadzam się na kontakt w sprawie zapytania. Szczegóły w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</span></label>
+        <button class="btn p" type="submit">Wyślij zapytanie <span class="arr" aria-hidden="true">→</span></button>
+        <p id="formMsg" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 KaDeStudio</span>
+    <span><a href="#realizacje">Realizacje</a> · <a href="#cennik">Cennik</a> · <a href="polityka-prywatnosci.html">Polityka prywatności</a></span>
+  </div>
+</footer>
+
+<script>
+const EMAIL = "kontakt@kadestudio.pl";
+
+// kafelki w miniaturze gry
+const TILE = ["#C9924A","#7FA36B","#B85C4A","#5E86A8","#D9C27A","#8C6BA8"];
+const tiles = document.getElementById("tiles");
+for (let i = 0; i < 24; i++){ const t = document.createElement("i"); t.style.background = TILE[(i*7 + (i>>2)) % TILE.length]; tiles.append(t); }
+
+// filtr realizacji
+const fbtns = document.querySelectorAll(".filters button");
+fbtns.forEach(b => b.addEventListener("click", () => {
+  fbtns.forEach(x => x.setAttribute("aria-pressed", x===b ? "true" : "false"));
+  const f = b.dataset.f;
+  document.querySelectorAll("#realizacje .proj").forEach(p => {
+    p.hidden = !(f==="all" || p.dataset.cat.split(" ").includes(f));
+  });
+}));
+
+// kalkulator
+const TYPES = [
+  {id:"wiz",  name:"Strona wizytówka",   price:1500, pages:true},
+  {id:"firm", name:"Strona firmowa",     price:3500, pages:true},
+  {id:"shop", name:"Sklep internetowy",  price:6000, pages:true},
+  {id:"b2b",  name:"Platforma B2B",      price:8000, pages:false},
+  {id:"app",  name:"Aplikacja mobilna",  price:15000,pages:false}
+];
+const EXTRAS = [
+  {id:"lang",  name:"Wersja angielska",       price:900},
+  {id:"copy",  name:"Teksty na stronę",       price:600},
+  {id:"logo",  name:"Logo i identyfikacja",   price:800},
+  {id:"book",  name:"Rezerwacje online",      price:1500},
+  {id:"pay",   name:"Płatności online",       price:1200},
+  {id:"ai",    name:"Asystent AI",            price:2000},
+  {id:"integ", name:"Integracja z systemem",  price:1500}
+];
+const SPEED = [
+  {id:"std",  name:"Standardowy", mult:1},
+  {id:"fast", name:"Przyspieszony", mult:1.25}
+];
+const state = {type:"firm", pages:0, extras:new Set(["lang"]), speed:"std"};
+const zl = n => Math.round(n).toLocaleString("pl-PL").replace(/ |,/g," ") + " zł";
+
+function chip(group, item, type, checked, label){
+  const l = document.createElement("label");
+  l.className = "chip";
+  l.innerHTML = `<input type="${type}" name="${group}" id="${group}-${item.id}" value="${item.id}" ${checked?"checked":""}><span>${label}</span>`;
+  return l;
+}
+TYPES.forEach(x => document.getElementById("types").append(chip("type", x, "radio", x.id===state.type, `${x.name} <em>od ${zl(x.price)}</em>`)));
+EXTRAS.forEach(x => document.getElementById("extras").append(chip("extra", x, "checkbox", state.extras.has(x.id), `${x.name} <em>+${zl(x.price)}</em>`)));
+SPEED.forEach(x => document.getElementById("speed").append(chip("speed", x, "radio", x.id===state.speed, x.mult>1 ? `${x.name} <em>+25%</em>` : x.name)));
+
+function calc(){
+  const type = TYPES.find(x => x.id===state.type);
+  const lines = [[type.name, type.price]];
+  if (type.pages && state.pages) lines.push([`Dodatkowe podstrony (${state.pages})`, state.pages*300]);
+  EXTRAS.filter(x => state.extras.has(x.id)).forEach(x => lines.push([x.name, x.price]));
+  let sum = lines.reduce((a,l) => a+l[1], 0);
+  const speed = SPEED.find(x => x.id===state.speed);
+  if (speed.mult > 1){ const add = sum*(speed.mult-1); lines.push(["Termin przyspieszony", add]); sum += add; }
+  return {type, lines, sum};
+}
+function render(){
+  const {type, lines, sum} = calc();
+  document.getElementById("pagesBox").hidden = !type.pages;
+  document.getElementById("pages").textContent = state.pages;
+  document.getElementById("lines").innerHTML = lines.map(l => `<div class="qline"><span>${l[0]}</span><span>${zl(l[1])}</span></div>`).join("");
+  document.getElementById("total").textContent = zl(sum);
+  document.getElementById("care").textContent = `+ opieka od ${type.id==="app"||type.id==="b2b" ? 400 : 200} zł/mies. (opcjonalnie)`;
+}
+document.getElementById("wycena").addEventListener("change", e => {
+  const i = e.target;
+  if (i.name==="type") state.type = i.value;
+  if (i.name==="speed") state.speed = i.value;
+  if (i.name==="extra") i.checked ? state.extras.add(i.value) : state.extras.delete(i.value);
+  render();
+});
+document.getElementById("minus").onclick = () => { state.pages = Math.max(0, state.pages-1); render(); };
+document.getElementById("plus").onclick  = () => { state.pages = Math.min(20, state.pages+1); render(); };
+render();
+
+document.getElementById("useQuote").onclick = () => {
+  const {type, lines, sum} = calc();
+  document.getElementById("f-type").value = type.name;
+  const txt = "Wstępna wycena z kalkulatora:\n" + lines.map(l => `- ${l[0]}: ${zl(l[1])}`).join("\n") + `\nRazem od ${zl(sum)} netto\n\n`;
+  const msg = document.getElementById("f-msg");
+  msg.value = txt + msg.value.replace(/^Wstępna wycena z kalkulatora:[\s\S]*?netto\n\n/, "");
+  document.getElementById("kontakt").scrollIntoView();
+  msg.focus({preventScroll:true});
+};
+
+// formularz
+document.getElementById("mailLink").href = "mailto:" + EMAIL;
+document.getElementById("mailLink").textContent = EMAIL;
+document.getElementById("form").addEventListener("submit", e => {
+  e.preventDefault();
+  const out = document.getElementById("formMsg");
+  const name = document.getElementById("f-name").value.trim();
+  const mail = document.getElementById("f-email").value.trim();
+  if (!name || !/^\S+@\S+\.\S+$/.test(mail)) { out.textContent = "Podaj imię i nazwisko oraz poprawny e-mail, abyśmy mogli odpowiedzieć."; return; }
+  if (!document.getElementById("f-ok").checked) { out.textContent = "Zaznacz zgodę na kontakt, abyśmy mogli odpowiedzieć na zapytanie."; return; }
+  const body = `Imię i nazwisko: ${name}\nE-mail: ${mail}\nProjekt: ${document.getElementById("f-type").value}\nBudżet: ${document.getElementById("f-budget").value}\n\n${document.getElementById("f-msg").value}`;
+  location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("Zapytanie ze strony: " + document.getElementById("f-type").value)}&body=${encodeURIComponent(body)}`;
+  out.textContent = `Otwieramy program pocztowy z gotową wiadomością. Jeśli się nie otworzył, napisz na ${EMAIL}.`;
+});
+</script>
+</body>
+</html>
