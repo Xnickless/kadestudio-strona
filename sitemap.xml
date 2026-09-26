@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://kadestudio.pl/</loc><lastmod>2026-09-26</lastmod><priority>1.0</priority></url>
+  <url><loc>https://kadestudio.pl/strony-internetowe/</loc><lastmod>2026-09-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://kadestudio.pl/sklepy-internetowe/</loc><lastmod>2026-09-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://kadestudio.pl/platformy-b2b/</loc><lastmod>2026-09-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://kadestudio.pl/aplikacje-mobilne/</loc><lastmod>2026-09-26</lastmod><priority>0.8</priority></url>
   <url><loc>https://kadestudio.pl/polityka-prywatnosci.html</loc><lastmod>2026-09-26</lastmod><priority>0.2</priority></url>
 </urlset>

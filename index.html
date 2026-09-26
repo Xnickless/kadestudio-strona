@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tworzenie stron internetowych, sklepów i aplikacji mobilnych | KaDeStudio</title>
-<meta name="description" content="Tworzenie stron internetowych dla firm, sklepów, platform B2B i aplikacji mobilnych iOS i Android. Jawny cennik od 1 500 zł, stała cena w umowie, kod na własność klienta. Działamy w całej Polsce.">
+<meta name="description" content="Tworzenie stron internetowych dla firm, sklepów, platform B2B i aplikacji mobilnych iOS i Android. Jawny cennik od 1 500 zł, stała cena w umowie, kod na własność klienta. Kraków i cała Polska.">
 <meta name="theme-color" content="#131517">
 <link rel="canonical" href="https://kadestudio.pl/">
 <meta property="og:type" content="website">
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://kadestudio.pl/">
 <meta property="og:image" content="https://kadestudio.pl/img/hurtownia-b2b.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"KaDeStudio","url":"https://kadestudio.pl/","email":"kontakt@kadestudio.pl","areaServed":"PL","priceRange":"od 1500 zł","description":"Strony internetowe, sklepy, platformy B2B i aplikacje mobilne dla firm."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"KaDeStudio","url":"https://kadestudio.pl/","email":"kontakt@kadestudio.pl","areaServed":[{"@type":"City","name":"Kraków"},{"@type":"Country","name":"Polska"}],"address":{"@type":"PostalAddress","addressLocality":"Kraków","addressCountry":"PL"},"priceRange":"od 1500 zł","description":"Strony internetowe, sklepy, platformy B2B i aplikacje mobilne dla firm."}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -70,6 +70,15 @@ section{padding-block:100px}
 .btn.s:hover{border-color:var(--muted)}
 .btn .arr{transition:transform .15s}
 .btn:hover .arr{transform:translateX(3px)}
+
+/* topbar */
+.topbar{background:#0E1012;border-bottom:1px solid var(--line);font-size:.82rem;color:var(--muted)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:36px}
+.tb-right{display:flex;align-items:center;gap:20px}
+.topbar a{display:inline-flex;align-items:center;gap:7px;color:var(--head);text-decoration:none}
+.topbar a:hover{color:var(--accent-hi)}
+.topbar svg{width:14px;height:14px;color:var(--accent-hi);flex:none}
+@media (max-width:520px){.tb-what,.tb-resp{display:none}.topbar .wrap{justify-content:center}}
 
 /* nav */
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(19,21,23,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
@@ -299,6 +308,13 @@ footer a:hover{color:var(--head)}
 </head>
 <body>
 
+<div class="topbar">
+  <div class="wrap">
+    <span class="tb-what">Strony · Sklepy · Aplikacje · B2B</span>
+    <span class="tb-right"><a href="mailto:kontakt@kadestudio.pl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>kontakt@kadestudio.pl</a><span class="tb-resp">Odpowiadamy w 1 dzień roboczy</span></span>
+  </div>
+</div>
+
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="#top" aria-label="KaDeStudio, strona główna"><span class="mark">KD</span>KaDeStudio</a>
@@ -308,6 +324,7 @@ footer a:hover{color:var(--head)}
       <li><a href="#cennik">Cennik</a></li>
       <li><a href="#wycena">Wycena</a></li>
       <li><a href="#faq">FAQ</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
     </ul>
     <a class="btn p" href="#kontakt">Wyceń projekt</a>
   </div>
@@ -460,11 +477,11 @@ footer a:hover{color:var(--head)}
       <p class="lead">Każdy projekt robimy od zera pod Twoją firmę, bez gotowych szablonów.</p>
     </div>
     <div class="svc-grid">
-      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div><h3>Strony wizytówki</h3><p>Jedna dopracowana strona: kim jesteś, co robisz i jak się z Tobą skontaktować.</p><span class="for">gabinety · warsztaty · usługi lokalne</span></div>
-      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div><h3>Strony firmowe</h3><p>Oferta, aktualności i panel, w którym sam zmienisz teksty i zdjęcia.</p><span class="for">firmy usługowe · biura · restauracje</span></div>
-      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h2l2 11h10l2-8H7"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg></div><h3>Sklepy internetowe</h3><p>Produkty, koszyk, BLIK i karty, maile do klientów i panel zamówień.</p><span class="for">marki · producenci · rękodzieło</span></div>
-      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V8l9-5 9 5v13"/><path d="M8 21v-7h8v7"/></svg></div><h3>Platformy B2B</h3><p>Hurtownia online: rejestracja po NIP, ceny po zalogowaniu, rabaty i integracje.</p><span class="for">hurtownie · dystrybutorzy</span></div>
-      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></div><h3>Aplikacje mobilne</h3><p>iOS i Android z jednego kodu. Konta, czat, powiadomienia, panel admina i publikacja w sklepach.</p><span class="for">startupy · kluby · rezerwacje</span></div>
+      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div><h3>Strony wizytówki</h3><p>Jedna dopracowana strona: kim jesteś, co robisz i jak się z Tobą skontaktować.</p><span class="for">gabinety · warsztaty · usługi lokalne</span><a class="link" href="strony-internetowe/" aria-label="Więcej o stronach internetowych">Więcej →</a></div>
+      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div><h3>Strony firmowe</h3><p>Oferta, aktualności i panel, w którym sam zmienisz teksty i zdjęcia.</p><span class="for">firmy usługowe · biura · restauracje</span><a class="link" href="strony-internetowe/" aria-label="Więcej o stronach firmowych">Więcej →</a></div>
+      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h2l2 11h10l2-8H7"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg></div><h3>Sklepy internetowe</h3><p>Produkty, koszyk, BLIK i karty, maile do klientów i panel zamówień.</p><span class="for">marki · producenci · rękodzieło</span><a class="link" href="sklepy-internetowe/" aria-label="Więcej o sklepach internetowych">Więcej →</a></div>
+      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V8l9-5 9 5v13"/><path d="M8 21v-7h8v7"/></svg></div><h3>Platformy B2B</h3><p>Hurtownia online: rejestracja po NIP, ceny po zalogowaniu, rabaty i integracje.</p><span class="for">hurtownie · dystrybutorzy</span><a class="link" href="platformy-b2b/" aria-label="Więcej o platformach B2B">Więcej →</a></div>
+      <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></div><h3>Aplikacje mobilne</h3><p>iOS i Android z jednego kodu. Konta, czat, powiadomienia, panel admina i publikacja w sklepach.</p><span class="for">startupy · kluby · rezerwacje</span><a class="link" href="aplikacje-mobilne/" aria-label="Więcej o aplikacjach mobilnych">Więcej →</a></div>
       <div class="svc"><div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg></div><h3>Automatyzacje i AI</h3><p>Asystent AI na stronie, automatyczne odpowiedzi, opisy produktów i łączenie systemów.</p><span class="for">firmy z powtarzalną pracą</span></div>
     </div>
   </div>
@@ -629,7 +646,7 @@ footer a:hover{color:var(--head)}
         <p class="lead">Opisz krótko, czego potrzebujesz. Odpowiemy w ciągu jednego dnia roboczego. Pierwsza rozmowa jest bezpłatna i do niczego nie zobowiązuje.</p>
         <dl class="contact-data">
           <dt>E-mail</dt><dd><a id="mailLink" href="mailto:kontakt@kadestudio.pl">kontakt@kadestudio.pl</a></dd>
-          <dt>Obszar</dt><dd>cała Polska, zdalnie</dd>
+          <dt>Obszar</dt><dd>Kraków i cała Polska (zdalnie)</dd>
           <dt>Odpowiedź</dt><dd>do 1 dnia roboczego</dd>
         </dl>
       </div>
@@ -674,6 +691,7 @@ footer a:hover{color:var(--head)}
 <footer>
   <div class="wrap">
     <span>© 2026 KaDeStudio</span>
+    <span><a href="strony-internetowe/">Strony internetowe</a> · <a href="sklepy-internetowe/">Sklepy internetowe</a> · <a href="platformy-b2b/">Platformy B2B</a> · <a href="aplikacje-mobilne/">Aplikacje mobilne</a></span>
     <span><a href="#realizacje">Realizacje</a> · <a href="#cennik">Cennik</a> · <a href="polityka-prywatnosci.html">Polityka prywatności</a></span>
   </div>
 </footer>
