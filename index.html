@@ -321,7 +321,7 @@ footer a:hover{color:var(--head)}
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="KD KaDeStudio"><span class="mark">KD</span>KaDeStudio</a>
+    <a class="logo" href="/" aria-label="KD KaDeStudio"><span class="mark">KD</span>KaDeStudio</a>
     <ul id="menu">
       <li><a href="#realizacje">Realizacje</a></li>
       <li><a href="#uslugi">Usługi</a></li>
@@ -810,5 +810,6 @@ document.getElementById("form").addEventListener("submit", e => {
 });
 </script>
 <script>(function(){var n=document.querySelector(".nav"),b=n&&n.querySelector(".menu-btn");if(!b)return;function s(o){n.classList.toggle("open",o);b.setAttribute("aria-expanded",o);b.setAttribute("aria-label",o?"Zamknij menu":"Otwórz menu")}b.addEventListener("click",function(){s(!n.classList.contains("open"))});n.querySelectorAll("ul a").forEach(function(a){a.addEventListener("click",function(){s(false)})});document.addEventListener("keydown",function(e){if(e.key==="Escape")s(false)})})();</script>
+<script>document.querySelectorAll('a[href="/"]').forEach(function(a){a.addEventListener("click",function(e){if(location.pathname==="/"){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});history.replaceState(null,"","/")}})});</script>
 </body>
 </html>
