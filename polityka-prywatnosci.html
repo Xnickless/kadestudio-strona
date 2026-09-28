@@ -8,12 +8,22 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="description" content="Polityka prywatności KaDeStudio: jakie dane zbieramy przez formularz i e-mail, w jakim celu, jak długo je przechowujemy i jakie masz prawa.">
 <title>Polityka prywatności · KaDeStudio</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap">
+<link rel="preload" href="/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Sora";font-style:normal;font-weight:300 700;font-display:swap;src:url(/fonts/sora-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Sora";font-style:normal;font-weight:300 700;font-display:swap;src:url(/fonts/sora-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/plexmono-400-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/plexmono-400-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/plexmono-500-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/plexmono-500-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Sora Fallback";src:local("Arial"),local("Helvetica"),local("Liberation Sans");size-adjust:114.5%;ascent-override:84.7%;descent-override:25.3%;line-gap-override:0%}
+@font-face{font-family:"Plex Fallback";src:local("Courier New"),local("Courier"),local("Liberation Mono");ascent-override:102.5%;descent-override:27.5%;line-gap-override:0%}
+</style>
 <style>
 :root{color-scheme:dark;--ground:#131517;--ink:#F5F6F7;--muted:#9BA1A8;--line:#2A2E33}
-body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.65 "Sora","Segoe UI",system-ui,sans-serif}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.65 "Sora","Sora Fallback","Segoe UI",system-ui,sans-serif}
 main{max-width:720px;margin:0 auto;padding:48px 20px 80px}
-h1{font:600 2.2rem/1.15 "Sora",system-ui,sans-serif;letter-spacing:-.03em;color:var(--ink)}
+h1{font:600 2.2rem/1.15 "Sora","Sora Fallback",system-ui,sans-serif;letter-spacing:-.03em;color:var(--ink)}
 h2{font-size:1.15rem;margin-top:34px}
 p,li{color:var(--muted)}
 a{color:#FF8A63}
@@ -46,7 +56,7 @@ a{color:#FF8A63}
 <p>Liczymy odwiedziny narzędziem GoatCounter (goatcounter.com). Widzimy tylko ogólne dane: które podstrony są czytane, z jakiej strony ktoś do nas trafił, rodzaj urządzenia i przeglądarki oraz kraj. GoatCounter nie zapisuje cookies, nie zapamiętuje adresu IP i nie pozwala rozpoznać konkretnej osoby. Dane nie są używane do reklam ani udostępniane innym firmom.</p>
 
 <h2>Pliki cookies</h2>
-<p>Ta strona nie używa cookies do śledzenia ani reklam. Czcionki są pobierane z Google Fonts, przez co Google widzi adres IP Twojego urządzenia.</p>
+<p>Ta strona nie używa cookies do śledzenia ani reklam. Czcionki są wczytywane z naszego serwera, a nie z zewnętrznych usług.</p>
 </main>
 <script data-goatcounter="https://kadestudio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
